@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "cypress-cloud": "npx cypress run --record --key 2aae2d3d-914d-4dd0-afe8-cbcfd58dca65",
-    "start": "npm start"
+    "cypress-cloud": "npx cypress run --record --key 2aae2d3d-914d-4dd0-afe8-cbcfd58dca65"
   },
   "author": "Alberto",
   "license": "ISC",
