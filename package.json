@@ -5,14 +5,18 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "cypress-cloud": "npx cypress run --record --key 2aae2d3d-914d-4dd0-afe8-cbcfd58dca65"
+    "cypress-cloud": "npx cypress run --record --key 2aae2d3d-914d-4dd0-afe8-cbcfd58dca65",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "author": "Alberto",
   "license": "ISC",
   "dependencies": {
-    "cypress": "^13.16.1"
+    "cypress": "^13.16.1",
+    "express": "^4.21.2"
   },
   "devDependencies": {
-    "cypress-mochawesome-reporter": "^3.8.2"
+    "cypress-mochawesome-reporter": "^3.8.2",
+    "nodemon": "^3.0.1"
   }
 }
