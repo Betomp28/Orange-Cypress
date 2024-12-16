@@ -1,7 +1,5 @@
 describe("Agregando un nuevo candidato a reclutamiento", () => {
   it("Debería iniciar sesión, navegar al módulo de reclutamiento y agregar un candidato con CV", () => {
-      // Crear dinámicamente un archivo CV
-      
 
       // Navega a la URL de inicio de sesión
       cy.visit("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
@@ -18,21 +16,50 @@ describe("Agregando un nuevo candidato a reclutamiento", () => {
       cy.get(".orangehrm-header-container > .oxd-button").should("be.visible").click();
 
       // Completa los datos basicos (Nombre,apellidos,telefono,correo)
-      cy.get(".--name-grouped-field > :nth-child(1) > :nth-child(2) > .oxd-input").should("be.visible").type("Jeziel");
-      cy.get(":nth-child(2) > :nth-child(2) > .oxd-input").should("be.visible").type("Oviedo");
-      cy.get(":nth-child(3) > :nth-child(2) > .oxd-input").should("be.visible").type("Cerdas");
-      cy.get(":nth-child(3) > .oxd-grid-3 > :nth-child(1) > .oxd-input-group > :nth-child(2) > .oxd-input").type("jezi@23gmail.com");
-      cy.get(".oxd-grid-3 > :nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-input").type("123456789");
+      cy.get(".--name-grouped-field > :nth-child(1) > :nth-child(2) > .oxd-input")
+        .should("be.visible")
+        .type("Jeziel")
+        .should((input) => {
+          expect(input.val()).to.be.a("string");  // Verifica que el valor del campo sea una cadena de texto
+      }); // Nombre
+
+      cy.get(":nth-child(2) > :nth-child(2) > .oxd-input")
+        .should("be.visible")
+        .type("Oviedo")
+        .should((input) => {
+          expect(input.val()).to.be.a("string");  // Verifica que el valor del campo sea una cadena de texto
+      }); // Apellido 1
+
+      cy.get(":nth-child(3) > :nth-child(2) > .oxd-input")
+        .should("be.visible")
+        .type("Cerdas")
+        .should((input) => {
+          expect(input.val()).to.be.a("string");  // Verifica que el valor del campo sea una cadena de texto
+      }); // Apellido 2
+
+      cy.get(":nth-child(3) > .oxd-grid-3 > :nth-child(1) > .oxd-input-group > :nth-child(2) > .oxd-input")
+        .type("jezi@23gmail.com")
+        .should((input) => {
+          expect(input.val()).to.be.a("string");  // Verifica que el valor del campo sea una cadena de texto
+      }); // Correo
+
+      cy.get(".oxd-grid-3 > :nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-input")
+        .type("123456789")
+        .should((input) => {
+          expect(input.val()).to.be.a("string");  // Verifica que el valor del campo sea una cadena de texto
+      }); // Teléfono
+
       // Seleccionar un puesto (dropdown)
       cy.get(".oxd-select-text--after > .oxd-icon").should("be.visible").click();
       cy.get('.oxd-select-dropdown > :nth-child(2)').click(); // Selecciona la segunda opción (ejemplo)
 
       // Adjuntar el archivo de CV con force: true
       cy.get('input[type="file"]').should("exist").selectFile("cypress/fixtures/candidato_cv.pdf", { force: true });
-      //Verificar que todo este correcto
+
+      // Verificar que todo este correcto
       cy.get(".oxd-checkbox-input > .oxd-icon").click();
       cy.get(".oxd-button--secondary").click();
       cy.get(".--visited").click();
-      
-    });
+      
+  });
 });
