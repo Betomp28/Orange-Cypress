@@ -62,4 +62,6 @@ describe("Agregando un nuevo candidato a reclutamiento", () => {
       cy.get(".--visited").click();
       
   });
-});
+});  
+
+//testing
